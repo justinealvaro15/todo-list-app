@@ -1,0 +1,21 @@
+.bold {
+  font-weight: 700;
+}
+
+.complete {
+  color: green;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 12px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+}

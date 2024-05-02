@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import clsx from 'clsx';
+
+import './index.css';
 
 const Home = () => {
     const [todoList, setTodoList] = useState([]);
@@ -59,15 +62,22 @@ const Home = () => {
                 <input type="text" id="entry" value={newEntry} onChange={(e) => setNewEntry(e.target.value)} />
                 <button onClick={handleAddEntry}>Add</button>
             </div>
-            {todoList?.map((todoItem) => {
-                const { id, content, status } = todoItem;
-                return (
-                    <div key={id}>
-                        {content} ({status})
-                        <button onClick={() => handleMarkComplete(id)}>Complete</button>
-                    </div>
-                );
-            })}
+            <div className="list">
+                {todoList?.map((todoItem) => {
+                    const { id, content, status } = todoItem;
+                    return (
+                        <div key={id} className="row">
+                            <button onClick={() => handleMarkComplete(id)}>
+                                Complete
+                            </button>
+                            <p className={clsx('bold', status === 'COMPLETE' && 'complete')}>
+                                {content}
+                            </p>
+
+                        </div>
+                    );
+                })}
+            </div>
         </div>
     );
 };
